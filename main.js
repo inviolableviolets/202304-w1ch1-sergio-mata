@@ -276,7 +276,7 @@ let round = 0;
 let questionAsked = questions[index];
 let positiveCount = 0;
 let negativeCount = 0;
-let timer = 3;
+let timer = 300;
 let timeout;
 
 const positiveCounter = document.querySelector(".positive-count");
@@ -592,7 +592,7 @@ const restartGame = () => {
   negativeCount = 0;
   negativeCounter.textContent = "0/27";
   circles[index].classList.add("current-letter");
-  timer = 3;
+  timer = 300;
   setTimer();
   wordField.focus();
   questions.forEach((question) => (question.status = 0));
