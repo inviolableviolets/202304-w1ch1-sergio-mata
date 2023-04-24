@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Roscón</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/da94a75f9d.js" crossorigin="anonymous"></script>
+  <link rel="icon" type="image/png"
+    href="https://img.genial.ly/58ac209244a885501cc8a634/35d672aa-7738-426b-b591-193a293f2ee1.png" sizes="16x16">
+</head>
+
+<body>
+  <div class="cover">
+    <div class="pasapalabra">PASAPALABRA</div>
+  </div>
+
+  <div class="modal instructions">
+    <div class="modal-header">
+      <div class="modal-title">INSTRUCCIONES</div>
+      <div class="close-button">&times;</div>
+    </div>
+    <div class="modal-body">
+      <p>Bienvenid@ a Pasapalabra, el famoso espacio televisivo que en absoluto ha sido denunciado en múltiples
+        ocasiones por vulneración de derechos de propiedad intelectual.</p>
+      <p>Vamos a jugar a un juego (que definitivamente nos hemos inventado nosotros) llamado El Roscón o algo así. Tiene
+        3 oportunidades para acertar 27 palabras en menos de 3 minutos. Cada una de dichas palabras se corresponde con
+        una letra del abecedario y para acertarlas, previamente, se le ofrecerá una definición de las mismas. Escriba la
+        definición que considere correcta sobre la línea azul de la derecha y pulse enter en su teclado para validar la
+        respuesta.</p>
+      <p>Si desea no contestar en el momento y prefiere pasar a la siguiente pregunta sin que se le contabilice un
+        fallo, puede pulsar el botón que contiene un reloj o presionar Enter sin escribir nada. De esta manera tendrá
+        otra oportunidad de volver a contestarla en la siguiente vuelta.</p>
+      <p>Para comenzar el juego cierre esta ventana clicando en la X de la esquina superior derecha.</p>
+      <span>¡SUERTE!</span>
+    </div>
+  </div>
+
+  <div class="modal timeover closed">
+    <div class="modal-header">
+      <div class="modal-title">¡Rayos y retruécanos!</div>
+    </div>
+    <div class="modal-body">
+      <p>Se ha quedado sin tiempo.</p>
+      <p class="ranking"></p>
+      <span>¿Desea volver a intentarlo?</span>
+    </div>
+    <div class="try-again">
+      <button class="retry">✔</button>
+      <span class="heart blink"> &#10084;</span>
+      <button class="exit">✖</button>
+    </div>
+  </div>
+
+  <div class="modal tryagain closed">
+    <div class="modal-header">
+      <div class="modal-title">¡Fin del juego!</div>
+    </div>
+    <div class="modal-body">
+      <p>No ha conseguido completar El Roscón, pero todavía le quedan vidas.</p>
+      <p class="ranking"></p>
+      <span>¿Desea volver a intentarlo?</span>
+    </div>
+    <div class="try-again">
+      <button class="retry">✔</button>
+      <span class="heart blink"> &#10084;</span>
+      <button class="exit">✖</button>
+    </div>
+  </div>
+
+  <div class="modal congratulations closed">
+    <div class="modal-header">
+      <div class="modal-title">Nos quitamos el sombrero</div>
+    </div>
+    <div class="modal-body">
+      <p>Ha conseguido completar El Roscón de Pasapalabra.</p>
+      <p class="ranking"></p>
+      <span>¡Enhorabuena!</span>
+    </div>
+  </div>
+
+  <div class="modal condolences closed">
+    <div class="modal-header">
+      <div class="modal-title">¡Sin palabras!</div>
+    </div>
+    <div class="modal-body">
+      <p>Ha fallado todas y cada una de las preguntas. Suma 2+2 y le dan decimales.</p>
+      <p>Si no se esfuerza en responder, entenderá que no vamos a molestarnos en mostrarle el ranking.</p>
+      <span>¿Desea volver a intentarlo?</span>
+    </div>
+    <div class="try-again">
+      <button class="retry">✔</button>
+      <span class="heart blink"> &#10084;</span>
+      <button class="exit">✖</button>
+    </div>
+  </div>
+
+  <div class="modal end closed">
+    <div class="modal-header">
+      <div class="modal-title">¡Hasta aquí podíamos leer!</div>
+    </div>
+    <div class="modal-body">
+      <p>Ni a usted le quedan más vidas ni a nosotros más preguntas, lo sentimos.</p>
+      <p class="ranking"></p>
+      <span>Gracias por jugar.</span>
+    </div>
+    <div class="try-again">
+      <button class="noretry" disabled>✔</button>
+      <span class="brokenheart">&#128148;</span>
+      <button class="real-exit">✖</button>
+    </div>
+  </div>
+
+  <div class="modal error closed">
+    <div class="modal-header">
+      <div class="modal-title">¡INCORRECTO!</div>
+    </div>
+    <div class="modal-body">
+      <p>La respuesta correcta era:</p>
+      <span class="correct-answer"></span>
+    </div>
+  </div>
+
+  <div class="dark-overlay"></div>
+  <div class="confetti"></div>
+  <div class="correct-overlay"></div>
+  <div class="wrong-overlay"></div>
+  <div class="pass-overlay"></div>
+
+  <section class="left">
+    <div class="alphabet">
+      <div class="letter"><span class="circle current-letter">A</span></div>
+      <div class="letter"><span class="circle">B</span></div>
+      <div class="letter"><span class="circle">C</span></div>
+      <div class="letter"><span class="circle">D</span></div>
+      <div class="letter"><span class="circle">E</span></div>
+      <div class="letter"><span class="circle">F</span></div>
+      <div class="letter"><span class="circle">G</span></div>
+      <div class="letter"><span class="circle">H</span></div>
+      <div class="letter"><span class="circle">I</span></div>
+      <div class="letter"><span class="circle">J</span></div>
+      <div class="letter"><span class="circle">K</span></div>
+      <div class="letter"><span class="circle">L</span></div>
+      <div class="letter"><span class="circle">M</span></div>
+      <div class="letter"><span class="circle">N</span></div>
+      <div class="letter"><span class="circle">Ñ</span></div>
+      <div class="letter"><span class="circle">O</span></div>
+      <div class="letter"><span class="circle">P</span></div>
+      <div class="letter"><span class="circle">Q</span></div>
+      <div class="letter"><span class="circle">R</span></div>
+      <div class="letter"><span class="circle">S</span></div>
+      <div class="letter"><span class="circle">T</span></div>
+      <div class="letter"><span class="circle">U</span></div>
+      <div class="letter"><span class="circle">V</span></div>
+      <div class="letter"><span class="circle">W</span></div>
+      <div class="letter"><span class="circle">X</span></div>
+      <div class="letter"><span class="circle">Y</span></div>
+      <div class="letter"><span class="circle">Z</span></div>
+      <div class="timer"></div>
+      <div class="pause">I I</div>
+      <div class="positive-count"><span>0/27</span></div>
+      <div class="negative-count"><span>0/27</span></div>
+    </div>
+  </section>
+  <section class="right">
+    <form action="" class="questions">
+      <span class="current-question"></span>
+      <input autofocus class="user-answer" type="text" placeholder="&#128430;" maxlength="15" size="15" disabled>
+    </form>
+    <div class="buttons">
+      <button class="pass">&#128337;&#65038;</button>
+    </div>
+  </section>
+  <footer>Vidas restantes<span class="first-heart"> &#10084;</span><span class="second-heart">&#10084;</span><span
+      class="third-heart">&#10084;</span></footer>
+  <script src="main.js"></script>
+
+</body>
+
+</html>
